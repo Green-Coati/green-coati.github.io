@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>wordle dorsk</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="content">
+            <div class="language-container">
+                <div class="language">
+                    <div class="language-option button" id="da">Dansk</div>
+                    <div class="language-option button" id="no">Norsk</div>
+                </div>
+            </div>
+            <div class="result-container">
+                <div class="lose">
+                    <h1 class="lose-message"></h1>
+                    <h2>Ordet var: <span class="word"></span></h2>
+                    <div class="restart button" onclick="window.location.reload()"></div>
+                </div>
+                <div class="win">
+                    <h1 class="win-message"></h1>
+                    <h2>Ordet var: <span class="word"></span></h2>
+                    <div class="restart button" onclick="window.location.reload()"></div>
+                </div>
+            </div>
+            <div class="guess-container">
+
+            </div>
+            <div class="keyboard">
+                <div class="keyboard-row" id="row-1">
+                    <div class="key button">Q</div>
+                    <div class="key button">W</div>
+                    <div class="key button">E</div>
+                    <div class="key button">R</div>
+                    <div class="key button">T</div>
+                    <div class="key button">Y</div>
+                    <div class="key button">U</div>
+                    <div class="key button">I</div>
+                    <div class="key button">O</div>
+                    <div class="key button">P</div>
+                    <div class="key button">Å</div>
+                </div>
+                <div class="keyboard-row" id="row-2">
+                    <div class="key button">A</div>
+                    <div class="key button">S</div>
+                    <div class="key button">D</div>
+                    <div class="key button">F</div>
+                    <div class="key button">G</div>
+                    <div class="key button">H</div>
+                    <div class="key button">J</div>
+                    <div class="key button">K</div>
+                    <div class="key button">L</div>
+                    <div class="key button"></div>
+                    <div class="key button"></div>
+                </div>
+                <div class="keyboard-row" id="row-3">
+                    <div class="key button" style="aspect-ratio: 2">Enter</div>
+                    <div class="key button">Z</div>
+                    <div class="key button">X</div>
+                    <div class="key button">C</div>
+                    <div class="key button">V</div>
+                    <div class="key button">B</div>
+                    <div class="key button">N</div>
+                    <div class="key button">M</div>
+                    <div class="key button" style="aspect-ratio: 2">Backspace</div>
+                </div>
+            </div>
+        </div>
+        <script src="genCells.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
