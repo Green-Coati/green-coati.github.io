@@ -1,0 +1,93 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0.5%;
+    margin: 0;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+}
+
+.creature {
+    height: 10vh;
+    padding: 0.5%;
+    aspect-ratio: 1;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.creature:hover {
+    transform: scale(1.05);
+}
+
+.creature:active {
+    transform: scale(1);
+}
+
+button {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    font-family: 'Courier new', serif;
+    padding: 1%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    color: black;
+    background-color: white;
+    transform: scale(1.04);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+.monsters {
+    width: 100%;
+    padding: 0.5%;
+}
+
+.buttons {
+    width: 100%;
+}
+
+select {
+    border: 1px solid white;
+    color: white;
+    background-color: black;
+    padding: 0.5%;
+    cursor: pointer;
+}
+
+.monster-info {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-panel {
+    font-family: "Courier new", serif, monospace;
+    display: flex;
+    width: 50%;
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75%;
+    flex-direction: column;
+}
+
+.info-panel > button {
+    margin-top: 5px;
+}
+
+#monster-image {
+    width: 50%;
+    aspect-ratio: 1;
+}
