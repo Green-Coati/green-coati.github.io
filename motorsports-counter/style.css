@@ -18,7 +18,7 @@ html, body {
 .-crement-button {
     border-radius: 100%;
     height: 10vh;
-    aspect-ratio: 1;
+    width: 10vh;
     background-color: #7a0019;
     border: 5px solid #5a0000;
     box-sizing: border-box;
@@ -110,4 +110,5 @@ span {
 .subtext {
     color: black;
     font-weight: bold;
+
 }
