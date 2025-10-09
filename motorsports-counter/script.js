@@ -1,32 +1,27 @@
-const $ = selector => document.querySelector(selector);
+const $ = selector => document.querySelector(selector)
 
 $('.logo').onclick = () => {
-    window.location.href = 'https://gophermotorsports.com/';
+    window.location.href = 'https://gophermotorsports.com/'
 }
 
-const updateNumber = number => {
-    $('.tooth-number').innerHTML = number;
+const updateNumber = (number) => {
+    $('.tooth-number').innerHTML = number
 }
+
+let teethManufactured = parseInt(localStorage['teethNumber'] || '0')
+updateNumber(teethManufactured)
 
 $('.increment').onclick = () => {
-    ws.send(JSON.stringify({
-        type: 'inc'
-    }));
+    teethManufactured++
+    localStorage['teethNumber'] = teethManufactured
+    updateNumber(teethManufactured)
 }
 
 $('.decrement').onclick = () => {
-    ws.send(JSON.stringify({
-        type: 'dec'
-    }));
-}
-
-const ws = new WebSocket('ws://localhost:11000');
-
-ws.onmessage = message => {
-    const data = JSON.parse(message.data);
-    if (data.type == 'number') {
-        updateNumber(data.number);
-    }
+    if (teethManufactured == 0) return
+    teethManufactured--
+    localStorage['teethNumber'] = teethManufactured
+    updateNumber(teethManufactured)
 }
 
 const digestMessage = async message => {
@@ -47,3 +42,4 @@ const validatePassword = async () => {
 }
 
 validatePassword();
+
