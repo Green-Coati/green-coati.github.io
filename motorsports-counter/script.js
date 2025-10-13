@@ -20,7 +20,7 @@ $('.decrement').onclick = () => {
     }));
 }
 
-const ws = new WebSocket('ws://35.239.172.21:11000');
+const ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 
 ws.onmessage = message => {
     const data = JSON.parse(message.data);
