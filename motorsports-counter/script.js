@@ -10,9 +10,11 @@ const updateNumber = number => {
     $('.tooth-number').innerHTML = number;
 }
 
+let ws
+
 const connect = () => {
 
-    let ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
+    ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 
     $('.increment').onclick = () => {
         if (!mutator) {
@@ -73,3 +75,4 @@ const validatePassword = async () => {
 }
 
 connect();
+
