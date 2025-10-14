@@ -19,9 +19,6 @@ $('.increment').onclick = () => {
             alert("Invalid password!");
         }
     }
-    if (ws.readyState == WebSocket.CLOSED) {
-        ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
-    }
     ws.send(JSON.stringify({
         type: 'inc'
     }));
@@ -36,9 +33,6 @@ $('.decrement').onclick = () => {
             alert("Invalid password!");
         }
     }
-    if (ws.readyState == WebSocket.CLOSED) {
-        ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
-    }
     ws.send(JSON.stringify({
         type: 'dec'
     }));
@@ -51,6 +45,10 @@ ws.onmessage = message => {
     if (data.type == 'number') {
         updateNumber(data.number);
     }
+}
+
+ws.onclose = () => {
+    ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 }
 
 const digestMessage = async message => {
@@ -69,6 +67,3 @@ const validatePassword = async () => {
     const inputHash = await digestMessage(passwordInput);
     return inputHash == passwordHash;
 }
-
-
-
