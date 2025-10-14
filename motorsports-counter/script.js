@@ -12,13 +12,13 @@ const updateNumber = number => {
 
 let ws
 
-const connect = () => {
+const connect = async () => {
 
     ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 
-    $('.increment').onclick = () => {
+    $('.increment').onclick = async () => {
         if (!mutator) {
-            if (validatePassword()) {
+            if (await validatePassword()) {
                 localStorage['mutator'] = 'true';
                 mutator = true;
             } else {
@@ -31,9 +31,9 @@ const connect = () => {
         }));
     }
 
-    $('.decrement').onclick = () => {
+    $('.decrement').onclick = async () => {
         if (!mutator) {
-            if (validatePassword()) {
+            if (await validatePassword()) {
                 localStorage['mutator'] = 'true';
                 mutator = true;
             } else {
@@ -77,5 +77,6 @@ const validatePassword = async () => {
 }
 
 connect();
+
 
 
