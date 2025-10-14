@@ -1,5 +1,7 @@
 const $ = selector => document.querySelector(selector);
 
+let mutator = localStorage['mutator'] == 'true' || false;
+
 $('.logo').onclick = () => {
     window.location.href = 'https://gophermotorsports.com/';
 }
@@ -9,6 +11,14 @@ const updateNumber = number => {
 }
 
 $('.increment').onclick = () => {
+    if (!mutator) {
+        if (validatePassword()) {
+            localStorage['mutator'] = 'true';
+            mutator = true;
+        } else {
+            alert("Invalid password!");
+        }
+    }
     if (ws.readyState == WebSocket.CLOSED) {
         ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
     }
@@ -18,6 +28,14 @@ $('.increment').onclick = () => {
 }
 
 $('.decrement').onclick = () => {
+    if (!mutator) {
+        if (validatePassword()) {
+            localStorage['mutator'] = 'true';
+            mutator = true;
+        } else {
+            alert("Invalid password!");
+        }
+    }
     if (ws.readyState == WebSocket.CLOSED) {
         ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
     }
@@ -26,7 +44,7 @@ $('.decrement').onclick = () => {
     }));
 }
 
-let ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
+const ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 
 ws.onmessage = message => {
     const data = JSON.parse(message.data);
@@ -49,8 +67,5 @@ const validatePassword = async () => {
     const passwordHash = "3d146d150df68e0ea31ce7b72c9f5e2823421eaa7bad50b482b5996f90892a1d";
     const passwordInput = prompt("Please enter the password.");
     const inputHash = await digestMessage(passwordInput);
-    if (inputHash != passwordHash) document.body.innerHTML = '';
+    return inputHash == passwordHash;
 }
-
-validatePassword();
-
