@@ -10,45 +10,49 @@ const updateNumber = number => {
     $('.tooth-number').innerHTML = number;
 }
 
-$('.increment').onclick = () => {
-    if (!mutator) {
-        if (validatePassword()) {
-            localStorage['mutator'] = 'true';
-            mutator = true;
-        } else {
-            alert("Invalid password!");
+const connect = () => {
+
+    let ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
+
+    $('.increment').onclick = () => {
+        if (!mutator) {
+            if (validatePassword()) {
+                localStorage['mutator'] = 'true';
+                mutator = true;
+            } else {
+                alert("Invalid password!");
+            }
+        }
+        ws.send(JSON.stringify({
+            type: 'inc'
+        }));
+    }
+
+    $('.decrement').onclick = () => {
+        if (!mutator) {
+            if (validatePassword()) {
+                localStorage['mutator'] = 'true';
+                mutator = true;
+            } else {
+                alert("Invalid password!");
+            }
+        }
+        ws.send(JSON.stringify({
+            type: 'dec'
+        }));
+    }
+
+    ws.onmessage = message => {
+        const data = JSON.parse(message.data);
+        if (data.type == 'number') {
+            updateNumber(data.number);
         }
     }
-    ws.send(JSON.stringify({
-        type: 'inc'
-    }));
-}
 
-$('.decrement').onclick = () => {
-    if (!mutator) {
-        if (validatePassword()) {
-            localStorage['mutator'] = 'true';
-            mutator = true;
-        } else {
-            alert("Invalid password!");
-        }
+    ws.onclose = () => {
+        setTimeout(connect, 1000);
     }
-    ws.send(JSON.stringify({
-        type: 'dec'
-    }));
-}
 
-let ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
-
-ws.onmessage = message => {
-    const data = JSON.parse(message.data);
-    if (data.type == 'number') {
-        updateNumber(data.number);
-    }
-}
-
-ws.onclose = () => {
-    ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 }
 
 const digestMessage = async message => {
@@ -67,3 +71,5 @@ const validatePassword = async () => {
     const inputHash = await digestMessage(passwordInput);
     return inputHash == passwordHash;
 }
+
+connect();
