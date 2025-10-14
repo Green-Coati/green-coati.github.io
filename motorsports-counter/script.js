@@ -19,7 +19,7 @@ $('.increment').onclick = () => {
             alert("Invalid password!");
         }
     }
-    if (ws.readyState == WebSocket.CLOSED) {
+    if (ws.readyState == 1) {
         ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
     }
     ws.send(JSON.stringify({
@@ -36,7 +36,7 @@ $('.decrement').onclick = () => {
             alert("Invalid password!");
         }
     }
-    if (ws.readyState == WebSocket.CLOSED) {
+    if (ws.readyState == 1) {
         ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
     }
     ws.send(JSON.stringify({
@@ -69,3 +69,4 @@ const validatePassword = async () => {
     const inputHash = await digestMessage(passwordInput);
     return inputHash == passwordHash;
 }
+
