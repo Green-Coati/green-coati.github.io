@@ -112,3 +112,16 @@ span {
     font-weight: bold;
 
 }
+
+.credit {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin-left: 1%;
+}
+
+.credit span {
+    color: #7a0019;
+    user-select: auto;
+    cursor: default;
+}
