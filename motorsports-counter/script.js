@@ -26,7 +26,7 @@ $('.decrement').onclick = () => {
     }));
 }
 
-const ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
+let ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 
 ws.onmessage = message => {
     const data = JSON.parse(message.data);
@@ -53,3 +53,4 @@ const validatePassword = async () => {
 }
 
 validatePassword();
+
