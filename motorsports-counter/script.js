@@ -9,12 +9,18 @@ const updateNumber = number => {
 }
 
 $('.increment').onclick = () => {
+    if (ws.readyState == WebSocket.CLOSED) {
+        ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
+    }
     ws.send(JSON.stringify({
         type: 'inc'
     }));
 }
 
 $('.decrement').onclick = () => {
+    if (ws.readyState == WebSocket.CLOSED) {
+        ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
+    }
     ws.send(JSON.stringify({
         type: 'dec'
     }));
