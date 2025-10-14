@@ -23,6 +23,7 @@ const connect = () => {
                 mutator = true;
             } else {
                 alert("Invalid password!");
+                return;
             }
         }
         ws.send(JSON.stringify({
@@ -37,6 +38,7 @@ const connect = () => {
                 mutator = true;
             } else {
                 alert("Invalid password!");
+                return;
             }
         }
         ws.send(JSON.stringify({
@@ -75,4 +77,5 @@ const validatePassword = async () => {
 }
 
 connect();
+
 
