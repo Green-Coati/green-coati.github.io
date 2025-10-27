@@ -16,6 +16,12 @@ const connect = async () => {
 
     ws = new WebSocket('wss://websocket-1025317924419.us-central1.run.app');
 
+    setTimeout(() => {
+        if (ws.readyState != 1) {
+            connect();
+        }
+    }, 3000);
+
     $('.increment').onclick = async () => {
         if (!mutator) {
             if (await validatePassword()) {
@@ -77,6 +83,7 @@ const validatePassword = async () => {
 }
 
 connect();
+
 
 
 
