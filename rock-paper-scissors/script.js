@@ -9,7 +9,7 @@ const HEIGHT = window.innerHeight
 
 const PLAYERS_PER_TEAM = 30
 const SPEED = 25
-const IMAGE_WIDTH = WIDTH / 50
+const IMAGE_WIDTH = HEIGHT / 25
 
 const gameCanvas = $('#game-canvas')
 
