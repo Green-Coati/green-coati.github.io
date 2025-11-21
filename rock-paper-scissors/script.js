@@ -7,8 +7,9 @@ const SCISSORS_FILE = 'assets/image/scissors.jpg'
 const WIDTH = window.innerWidth
 const HEIGHT = window.innerHeight
 
-const PLAYERS_PER_TEAM = 50
-const SPEED = 300
+const PLAYERS_PER_TEAM = 30
+const SPEED = 25
+const IMAGE_WIDTH = WIDTH / 50
 
 const gameCanvas = $('#game-canvas')
 
@@ -42,7 +43,7 @@ const getImage = player => {
 }
 
 const isColliding = (player1, player2) => {
-    return Math.abs(player1.x - player2.x) < 50 && Math.abs(player1.y - player2.y) < 50
+    return Math.abs(player1.x - player2.x) < IMAGE_WIDTH && Math.abs(player1.y - player2.y) < IMAGE_WIDTH
 }
 
 const getLoserType = (player1, player2) => {
@@ -60,8 +61,8 @@ const getLoserType = (player1, player2) => {
 }
 
 const bounce = player => {
-    if ((player.x <= 0 && player.xDirection <= 0) || (player.x + 50 >= WIDTH && player.xDirection >= 0)) player.xDirection *= -1
-    if ((player.y <= 0 && player.yDirection <= 0) || (player.y + 50 >= HEIGHT && player.yDirection >= 0)) player.yDirection *= -1
+    if ((player.x <= 0 && player.xDirection <= 0) || (player.x + IMAGE_WIDTH >= WIDTH && player.xDirection >= 0)) player.xDirection *= -1
+    if ((player.y <= 0 && player.yDirection <= 0) || (player.y + IMAGE_WIDTH >= HEIGHT && player.yDirection >= 0)) player.yDirection *= -1
 }
 
 const ctx = gameCanvas.getContext('2d')
@@ -82,7 +83,7 @@ const draw = () => {
     ctx.clearRect(0, 0, WIDTH, HEIGHT)
     for (const player of players) {
         const image = getImage(player)
-        ctx.drawImage(image, player.x, player.y, 50, 50)
+        ctx.drawImage(image, player.x, player.y, IMAGE_WIDTH, IMAGE_WIDTH)
         const dt = (Date.now() - prevFrameTime) / 1000
         player.advanceFrame(dt)
         bounce(player)
