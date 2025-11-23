@@ -13,3 +13,13 @@ html, body {
     align-items: center;
     justify-content: center;
 }
+
+h3 {
+    font-family: Helvetica, sans-serif;
+    color: white;
+    position: absolute;
+    top: 0.5vh;
+    left: 1vw;
+    display: none;
+    user-select: none;
+}
