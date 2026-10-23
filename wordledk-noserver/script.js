@@ -26,7 +26,7 @@ const main = async (randomWord) => {
 
     const keyDown = async event => {
         const key = event.key
-        if (key == 'Enter') {
+        if (key == 'Enter' && getWord(typingRow).length == 5) {
             const word = getWord(typingRow)
             const cells = $('.guess-container').children[typingRow].children
             const isValid = words.includes(word)
